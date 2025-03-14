@@ -7,7 +7,7 @@
 *Karlskrona, Sweden*
 
 ## Project Overview
-This project explores the impact of **incremental learning** on **explainability** in deep learning models, specifically investigating **explanation drift**—the phenomenon where model explanations shift unpredictably despite stable accuracy. The study uses **Grad-CAM** to visualize model explanations over multiple training phases and evaluates stability using correlation and **Intersection-over-Union (IoU) metrics**.
+This project explores the impact of **incremental learning** on **explainability** in deep learning models, specifically investigating **explanation drift**, the phenomenon where model explanations shift unpredictably despite stable accuracy. The study uses **Grad-CAM** to visualize model explanations over multiple training phases and evaluates stability using correlation and **Intersection-over-Union (IoU) metrics**.
 
 ## Key Features
 - **Incremental Learning Setup**: The model is trained in three phases with progressively increasing class complexity.
