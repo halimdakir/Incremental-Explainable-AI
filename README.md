@@ -18,7 +18,8 @@ This project explores the impact of **incremental learning** on **explainability
 ## **Workflow Diagram**
 Below is a high-level workflow diagram of the incremental XAI experiment:
 
-![Workflow Diagram](diagram.png)
+![diagram](https://github.com/user-attachments/assets/64331338-ab2e-4448-8f57-48286bf47c58)
+
 
 ## Dataset
 The project uses the **MNIST** dataset of handwritten digits, partitioned into three incremental phases:
