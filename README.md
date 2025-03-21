@@ -97,4 +97,4 @@ This project demonstrates that **incremental learning** affects model explanatio
 - Implementing **adaptive regularization techniques** to improve stability.
 
 ## Contact
-For questions or collaboration, please contact **Halim Dakir** at [my email].
+For questions or collaboration, please contact **Halim Dakir** at [hada24@student.bth.se].
