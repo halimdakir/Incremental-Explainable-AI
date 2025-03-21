@@ -102,23 +102,35 @@ print("DataLoader Phase3 length:", len(phase3_loader))
 
 # DEFINE A CNN MODEL
 class SimpleCNN(nn.Module):
+    # Convolution operation formula:
+    # (I * K)(i, j) = sum_m sum_n I(i - m, j - n) * K(m, n)
+    # where I is the input image, K is the kernel, and (i, j) is the pixel coordinates of the output feature map.
+    # The indices m and n iterate over the spatial dimensions of the kernel.
     def __init__(self, num_classes=10):
         super(SimpleCNN, self).__init__()
+        # Three convolutional layers
         self.conv1 = nn.Conv2d(1, 16, kernel_size=3, padding=1)
         self.conv2 = nn.Conv2d(16, 32, kernel_size=3, padding=1)
-        self.fc1 = nn.Linear(32*7*7, 128)
+        self.conv3 = nn.Conv2d(32, 64, kernel_size=3, padding=1)
+        # Fully connected layers
+        self.fc1 = nn.Linear(64 * 3 * 3, 128)
         self.fc2 = nn.Linear(128, num_classes)
 
     def forward(self, x):
+        # Convolutional layers with ReLU and max pooling
         x = F.relu(self.conv1(x))
         x = F.max_pool2d(x, 2)
         x = F.relu(self.conv2(x))
         x = F.max_pool2d(x, 2)
+        x = F.relu(self.conv3(x))
+        x = F.max_pool2d(x, 2)
+        # Flatten for fully connected layers
         x = x.view(x.size(0), -1)
         x = F.relu(self.fc1(x))
         x = self.fc2(x)
-        return x
+        return F.log_softmax(x, dim=1)
 
+# Evaluation function
 def evaluate(model, loader):
     model.eval()
     correct = 0
@@ -130,6 +142,7 @@ def evaluate(model, loader):
             correct += (preds == lbls).sum().item()
             total += lbls.size(0)
     return correct / total
+
 
 
 # TRAINING IN PHASES
